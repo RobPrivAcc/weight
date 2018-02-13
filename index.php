@@ -76,6 +76,43 @@
     </script>
     
     <script>
+     
+     function focusOut(){
+          var master = $("#masterValue").val();
+          var five = $("#fiveKgValue").val();
+          var twoAndHalf = $("#twoAndHaflKgValue").val();
+          var oneHalfKgValue = $("#oneHalfKgValue").val();
+          var oneKgValue = $("#oneKgValue").val();
+          var halfKgValue = $("#halfKgValue").val();
+          var quaterSize = $("#quaterSize").val();
+          var bagSize = $("#masterSize option:selected").text();
+      
+              
+          if (master.length === 0){
+              $("#masterValue").val(0);
+          }
+          if (five.length === 0){
+              $("#fiveKgValue").val(0);
+          }
+          if (twoAndHalf.length === 0){
+              $("#twoAndHaflKgValue").val(0);
+          }
+          if (oneKgValue.length === 0){
+              $("#oneKgValue").val(0);
+          }    
+      
+          if (oneHalfKgValue.length === 0){
+              $("#oneHalfKgValue").val(0);
+          }  
+      
+          if (halfKgValue.length === 0){
+              $("#halfKgValue").val(0);
+          }  
+          if (quaterSize.length === 0){
+              $("#quaterSize").val(0);
+          }  
+     }
+     
  function calculateWeight(){
     
     var master = $("#masterValue").val();
@@ -87,35 +124,52 @@
     var quaterSize = $("#quaterSize").val();
     var bagSize = $("#masterSize option:selected").text();
 
-        
-    if (master.length === 0){
-        $("#masterValue").val(0);
-    }
-    if (five.length === 0){
-        $("#fiveKgValue").val(0);
-    }
-    if (twoAndHalf.length === 0){
-        $("#twoAndHaflKgValue").val(0);
-    }
-    if (oneKgValue.length === 0){
-        $("#oneKgValue").val(0);
-    }    
-
-    if (oneHalfKgValue.length === 0){
-        $("#oneHalfKgValue").val(0);
-    }  
-
-    if (halfKgValue.length === 0){
-        $("#halfKgValue").val(0);
-    }  
-    if (quaterSize.length === 0){
-        $("#quaterSize").val(0);
-    }  
+    $("#masterValue").focusout(function(){
+         if(master.length === 0){
+          $("#masterValue").val(0);
+         }
+      });
     
-    
-    $.post( "pages/calculations.php", { calc: "weight", bagSize: bagSize, masterValue: master, fiveKgValue: five, twoAndHaflKgValue: twoAndHalf, oneHalfKgValue: oneHalfKgValue, oneKgValue: oneKgValue, halfKgValue: halfKgValue, quaterSize: quaterSize})
+    $("#fiveKgValue").focusout(function(){
+         if(five.length === 0){
+          $("#fiveKgValue").val(0);
+         }
+      });
+ 
+     $("#twoAndHaflKgValue").focusout(function(){
+         if(twoAndHalf.length === 0){
+          $("#twoAndHaflKgValue").val(0);
+         }
+      });   
+
+     $("#oneKgValue").focusout(function(){
+         if(oneKgValue.length === 0){
+          $("#oneKgValue").val(0);
+         }
+      });
+     
+     $("#oneHalfKgValue").focusout(function(){
+         if(oneHalfKgValue.length === 0){
+          $("#oneHalfKgValue").val(0);
+         }
+      });   
+
+     $("#halfKgValue").focusout(function(){
+         if(halfKgValue.length === 0){
+          $("#halfKgValue").val(0);
+         }
+      });
+
+     $("#quaterSize").focusout(function(){
+         if(quaterSize.length === 0){
+          $("#quaterSize").val(0);
+         }
+      });
+
+    $.post( "calculations.php", { calc: "weight", bagSize: bagSize, masterValue: master, fiveKgValue: five, twoAndHaflKgValue: twoAndHalf, oneHalfKgValue: oneHalfKgValue, oneKgValue: oneKgValue, halfKgValue: halfKgValue, quaterSize: quaterSize})
   .done(function( data ) {
-    $('#calcWeightResult').html( data );
+    //$('#calcWeightResult').html( data );
+    $('#testId').html( data );
   });
  }
  
@@ -123,12 +177,17 @@
     
     var master = $("#masterLenValue").val();
     var measuredLength = $("#measuredLength").val();
-    $.post( "pages/calculations.php", { calc: "length",master:master, measuredLength: measuredLength})
+    $.post( "calculations.php", { calc: "length",master:master, measuredLength: measuredLength})
      .done(function( data ) {
-       $('#calcLenghtResult').html( data );
+       $('#testId').html( data );
      });
     
  }
+  function resetValues(){
+   $('.inputValue').val('0');
+    $('#testId').html('');
+  }
+
     </script>
     
   </body>

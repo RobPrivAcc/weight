@@ -20,14 +20,14 @@ switch ($calc){
         $quater = (0.25/$bagSize) * $quaterKg;
         
         $total = $master+$five+$two+$one+$half+$quater+$oneHalf;
-        echo '<h3><div class="row"><div class ="col-sm-6">Calculated stock</div><div class =  "col-sm-6">'.$total.'</div></h3>';  
+        echo '<h5><div class="row"><div class ="col-sm-6">Calculated stock</div><div class =  "col-sm-6">'.$total.'</div></h5>';  
     break;
 
     case 'length':
         $master = $_POST['master'];
         $measuredLength = $_POST['measuredLength'];
         $len = round($measuredLength/$master,2);
-        echo '<h3><div class="row"><div class ="col-sm-6">Calculated length</div><div class =  "col-sm-6">'.$len.'</div></h3>';
+        echo '<h6><div class="row"><div class ="col-sm-6">Calculated length</div><div class =  "col-sm-6">'.$len.'</div></h6>';
         break;
 }
 
